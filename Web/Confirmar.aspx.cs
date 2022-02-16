@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Library;
 
 namespace Web
@@ -28,7 +23,7 @@ namespace Web
                     {
                         dr.Close();
 
-                        if (da.execute("UPDATE Usuarios SET confirmado=1 WHERE email='" + email + "';") == 1)
+                        if (da.execute("UPDATE Usuarios SET confirmado=1 WHERE email='" + email + "'") == 1)
                         {
                             lMessage.Text = "Has confirmado tu registro.";
                         }
@@ -39,7 +34,7 @@ namespace Web
                     }
                     else
                     {
-                        lMessage.Text = "Ha habido un error al confirmar tu registro.";
+                        lMessage.Text = "El número de confirmación es incorrecto.";
                     }
                 }
                 da.close();

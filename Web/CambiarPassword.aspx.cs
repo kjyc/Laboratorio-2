@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Net;
-using System.Net.Mail;
 using System.Web.UI.HtmlControls;
 using Library;
 
@@ -10,6 +8,7 @@ namespace Web
     public partial class CambiarPassword : System.Web.UI.Page
     {
         DataAccess da = new DataAccess();
+        MailSender ms = new MailSender();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -17,33 +16,16 @@ namespace Web
 
         protected void bRequestChange_Click(object sender, EventArgs e)
         {
-            sendEmail("joelkevin899@gmail.com");
-        }
-
-        private Boolean sendEmail(string toEmail)
-        {
-            try
+            int code = GetCode(tbEmail.Text);
+            string subject = "Cambio de contraseña";
+            string body = "<html><head></head><body><p>Utiliza el siguiente código: " + code + "</p></body></html>";
+            if (ms.sendEmail(tbEmail.Text, subject, body, true))
             {
-                int code = GetCode(toEmail);
-                MailAddress from = new MailAddress("kjyc.hads@gmail.com", "Kevin Joel Yovera Carlos");
-                MailAddress to = new MailAddress(toEmail);
-                string password_from = "Hads2202";
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.EnableSsl = true;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new NetworkCredential(from.Address, password_from);
-                MailMessage message = new MailMessage(from, to);
-                message.Subject = "Cambio de contraseña";
-                message.Body = "<html><head></head><body><p>Utiliza el siguiente código: " + code + "</p></body></html>";
-                message.IsBodyHtml = true;
-                smtp.Send(message);
-                return true;
+                showMessage("Se ha enviado el correo exitosamente.", true, true);
             }
-            catch (Exception e)
+            else
             {
-                return false;
+                showMessage("Ha ocurrido algún error al enviar el correo.", false, true);
             }
         }
 
@@ -73,34 +55,43 @@ namespace Web
             int code = int.Parse(tbCode.Text);
             string newPassword = tbNewPassword.Text;
 
-            if (da.connect()) {
+            if (da.connect())
+            {
                 if (da.count("SELECT count(*) FROM Usuarios WHERE codpass=" + code) == 1)
                 {
                     Random r = new Random();
-                    int row = da.execute("UPDATE Usuarios SET pass='" + newPassword + "', codpass=" + r.Next(100000, 1000000) + "  WHERE codpass=" + code);
-                    if (row == 1)
+                    if (da.execute("UPDATE Usuarios SET pass='" + newPassword + "', codpass=" + r.Next(100000, 1000000) + "  WHERE codpass=" + code) == 1)
                     {
-                        renderMessage("Se ha cambiado la contraseña.", true);
+                        showMessage("Se ha cambiado la contraseña.", true, false);
                     }
-                    else 
+                    else
                     {
-                        renderMessage("Ha ocurrido algún error al cambiar la contraseña.", false);
+                        showMessage("Ha ocurrido algún error al cambiar la contraseña.", false, false);
                     }
                 }
-                else 
+                else
                 {
-                    renderMessage("El código introducido no es correcto.", false);
+                    showMessage("El código no es válido.", false, false);
                 }
+                da.close();
             }
         }
-        private void renderMessage(string message, bool isOk) 
+        public void showMessage(string message, bool isOk, bool isEmail)
         {
             HtmlGenericControl container = new HtmlGenericControl("div");
             container.Attributes["class"] = isOk ? "alert alert-success m-0" : "alert alert-danger m-0";
             container.Attributes["role"] = "alert";
             container.InnerText = message;
-            pMessage.Controls.Add(container);
-            pMessage.CssClass = "p-2";
+            if (isEmail)
+            {
+                pMessageEmail.Controls.Add(container);
+                pMessageEmail.CssClass = "p-2";
+            }
+            else
+            {
+                pMessage.Controls.Add(container);
+                pMessage.CssClass = "p-2";
+            }
         }
     }
 }

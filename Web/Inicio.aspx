@@ -7,7 +7,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Inicio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-    <script src="https://kit.fontawesome.com/73848c5f00.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
@@ -48,7 +47,7 @@
                             </div>
                         </div>
                     </asp:RequiredFieldValidator>
-                    <asp:Panel ID="pMessage" runat="server" CssClass="d-none" />
+                    <asp:Panel ID="pMessage" runat="server" CssClass="d-none"></asp:Panel>
                     <div class="p-2">
                         <asp:Button ID="bLogin" runat="server" Text="Login" CssClass="btn btn-primary" OnClick="bLogin_Click" />
                     </div>

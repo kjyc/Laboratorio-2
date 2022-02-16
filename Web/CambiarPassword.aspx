@@ -36,6 +36,7 @@
                             </div>
                         </div>
                     </asp:RegularExpressionValidator>
+                    <asp:Panel ID="pMessageEmail" runat="server" CssClass="d-none"></asp:Panel>
                     <div class="p-2">
                         <asp:Button ID="bRequestChange" runat="server" Text="Solicitar código" CssClass="btn btn-primary" OnClick="bRequestChange_Click" ValidationGroup="SendEmail"/>
                     </div>
@@ -86,7 +87,7 @@
                             </div>
                         </div>
                     </asp:CompareValidator>
-                    <asp:Panel ID="pMessage" runat="server" CssClass="d-none"/>
+                    <asp:Panel ID="pMessage" runat="server" CssClass="d-none"></asp:Panel>
                     <div class="p-2">
                         <asp:Button ID="bChangePassword" ValidationGroup="ChangePassword" runat="server" Text="Cambiar contraseña" CssClass="btn btn-primary" OnClick="bChangePassword_Click" />
                     </div>

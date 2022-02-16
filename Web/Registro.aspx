@@ -108,9 +108,12 @@
                             </div>
                         </div>
                     </asp:RequiredFieldValidator>
-                    <asp:Panel ID="pMessage" runat="server" CssClass="d-none"/>
+                    <asp:Panel ID="pMessage" runat="server" CssClass="d-none"></asp:Panel>
                     <div class="p-2">
                         <asp:Button ID="bRegistrar" runat="server" Text="Registrarse" CssClass="btn btn-primary" OnClick="bRegistrar_Click" />
+                    </div>
+                    <div class="p-2">
+                        <a href="/Inicio.aspx">Ir a Inicio</a>
                     </div>
                 </form>
             </div>

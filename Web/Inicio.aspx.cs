@@ -16,7 +16,7 @@ namespace Web
         {
             if (da.connect())
             {
-                SqlDataReader dr = da.read("SELECT pass, confirmado FROM Usuarios WHERE email='" + tbEmail.Text + "';");
+                SqlDataReader dr = da.read("SELECT pass, confirmado FROM Usuarios WHERE email='" + tbEmail.Text + "'");
                 if (dr.HasRows)
                 {
                     dr.Read();
@@ -25,19 +25,34 @@ namespace Web
                         dr.Close();
                         Response.Redirect("http://hads22-02.azurewebsites.net/Menu.aspx");
                     }
+                    else if (!dr.GetBoolean(1))
+                    {
+                        showMessage("El correo no ha sido confirmado.");
+                        dr.Close();
+                    }
                     else
                     {
+                        showMessage("El correo o la contraseña es incorrecta.");
                         dr.Close();
-                        HtmlGenericControl container = new HtmlGenericControl("div");
-                        container.Attributes["class"] = "alert alert-danger m-0";
-                        container.Attributes["role"] = "alert";
-                        container.InnerText = "El correo o la contraseña es incorrecta.";
-                        pMessage.Controls.Add(container);
-                        pMessage.CssClass = "p-2";
                     }
+                }
+                else
+                {
+                    showMessage("El correo no está registrado.");
+                    dr.Close();
                 }
                 da.close();
             }
+        }
+
+        private void showMessage(string message)
+        {
+            HtmlGenericControl container = new HtmlGenericControl("div");
+            container.Attributes["class"] = "alert alert-danger m-0";
+            container.Attributes["role"] = "alert";
+            container.InnerText = message;
+            pMessage.Controls.Add(container);
+            pMessage.CssClass = "p-2";
         }
     }
 }
