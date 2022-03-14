@@ -1,7 +1,7 @@
 ﻿using System;
 using Library;
-using System.Data.SqlClient;
 using System.Web.UI.HtmlControls;
+using Domain;
 
 namespace Web
 {
@@ -14,38 +14,42 @@ namespace Web
         }
         protected void bLogin_Click(object sender, EventArgs e)
         {
-            if (da.connect())
+            if (da.Connect())
             {
-                SqlDataReader dr = da.read("SELECT pass, confirmado FROM Usuarios WHERE email='" + tbEmail.Text + "'");
-                if (dr.HasRows)
+                User user = da.GetUser(tbEmail.Text);
+                if (user != null)
                 {
-                    dr.Read();
-                    if (dr.GetString(0) == tbPassword.Text && dr.GetBoolean(1))
+                    if (!user.IsCorrectPassword(tbPassword.Text))
                     {
-                        dr.Close();
-                        Response.Redirect("http://hads22-02.azurewebsites.net/Menu.aspx");
+                        ShowMessage("La contraseña es incorrecta.");
                     }
-                    else if (!dr.GetBoolean(1))
+                    else if (!user.IsConfirmed)
                     {
-                        showMessage("El correo no ha sido confirmado.");
-                        dr.Close();
+                        ShowMessage("El correo no ha sido confirmado.");
                     }
                     else
                     {
-                        showMessage("El correo o la contraseña es incorrecta.");
-                        dr.Close();
+                        Session["User"] = user;
+                        Session["Email"] = tbEmail.Text;
+                        if (user.Role == "Alumno")
+                        {
+                            Response.Redirect("/Estudiante.aspx");
+                        }
+                        else if (user.Role == "Profesor")
+                        {
+                            Response.Redirect("/Profesor.aspx");
+                        }
                     }
                 }
                 else
                 {
-                    showMessage("El correo no está registrado.");
-                    dr.Close();
+                    ShowMessage("El correo no está registrado.");
                 }
-                da.close();
+                da.Close();
             }
         }
 
-        private void showMessage(string message)
+        private void ShowMessage(string message)
         {
             HtmlGenericControl container = new HtmlGenericControl("div");
             container.Attributes["class"] = "alert alert-danger m-0";

@@ -32,16 +32,16 @@ namespace Web
         public int GetCode(string email)
         {
             int code = -1;
-            if (da.connect())
+            if (da.Connect())
             {
-                SqlDataReader dr = da.read("SELECT codpass FROM Usuarios WHERE email='" + email + "';");
+                SqlDataReader dr = da.Read("SELECT codpass FROM Usuarios WHERE email='" + email + "';");
                 if (dr.HasRows)
                 {
                     dr.Read();
                     code = dr.GetInt32(0);
                     dr.Close();
                 }
-                da.close();
+                da.Close();
                 return code;
             }
             else
@@ -55,12 +55,12 @@ namespace Web
             int code = int.Parse(tbCode.Text);
             string newPassword = tbNewPassword.Text;
 
-            if (da.connect())
+            if (da.Connect())
             {
-                if (da.count("SELECT count(*) FROM Usuarios WHERE codpass=" + code) == 1)
+                if (da.Count("SELECT count(*) FROM Usuarios WHERE codpass=" + code) == 1)
                 {
                     Random r = new Random();
-                    if (da.execute("UPDATE Usuarios SET pass='" + newPassword + "', codpass=" + r.Next(100000, 1000000) + "  WHERE codpass=" + code) == 1)
+                    if (da.Execute("UPDATE Usuarios SET pass='" + newPassword + "', codpass=" + r.Next(100000, 1000000) + "  WHERE codpass=" + code) == 1)
                     {
                         showMessage("Se ha cambiado la contraseña.", true, false);
                     }
@@ -73,7 +73,7 @@ namespace Web
                 {
                     showMessage("El código no es válido.", false, false);
                 }
-                da.close();
+                da.Close();
             }
         }
         public void showMessage(string message, bool isOk, bool isEmail)

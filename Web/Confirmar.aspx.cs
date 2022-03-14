@@ -9,12 +9,12 @@ namespace Web
         DataAccess da = new DataAccess();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (da.connect())
+            if (da.Connect())
             {
                 string email = Request.Params["email"];
                 int confirmationNumber = int.Parse(Request.Params["numC"]);
 
-                SqlDataReader dr = da.read("SELECT numconfir FROM Usuarios WHERE email='" + email + "'");
+                SqlDataReader dr = da.Read("SELECT numconfir FROM Usuarios WHERE email='" + email + "'");
                 if (dr.HasRows)
                 {
                     dr.Read();
@@ -23,7 +23,7 @@ namespace Web
                     {
                         dr.Close();
 
-                        if (da.execute("UPDATE Usuarios SET confirmado=1 WHERE email='" + email + "'") == 1)
+                        if (da.Execute("UPDATE Usuarios SET confirmado=1 WHERE email='" + email + "'") == 1)
                         {
                             lMessage.Text = "Has confirmado tu registro.";
                         }
@@ -37,7 +37,7 @@ namespace Web
                         lMessage.Text = "El número de confirmación es incorrecto.";
                     }
                 }
-                da.close();
+                da.Close();
             }
             else
             {

@@ -17,7 +17,7 @@ namespace Web
 
         protected void bRegistrar_Click(object sender, EventArgs e)
         {
-            if (da.connect())
+            if (da.Connect())
             {
                 Random r = new Random();
 
@@ -29,9 +29,9 @@ namespace Web
                 string password = tbPassword.Text;
                 int codePassword = r.Next(100000, 1000000);
 
-                if (da.count("SELECT count(*) FROM Usuarios WHERE email='" + email + "'") != 1)
+                if (da.Count("SELECT count(*) FROM Usuarios WHERE email='" + email + "'") != 1)
                 {
-                    if (da.execute("INSERT INTO Usuarios VALUES ('" + email + "', '" + name + "', '" + lastname + "', " + confirmationNumber + ", 0, '" + rol + "', '" + password + "', " + codePassword + ")") == 1)
+                    if (da.Execute("INSERT INTO Usuarios VALUES ('" + email + "', '" + name + "', '" + lastname + "', " + confirmationNumber + ", 0, '" + rol + "', '" + password + "', " + codePassword + ")") == 1)
                     {
                         string subject = "Confirmación de registro";
                         string body = "<html><head></head><body><h2>Haz click en el enlace!</h2><a href='http://hads22-02.azurewebsites.net/Confirmar.aspx?email=" + email + "&numC=" + confirmationNumber + "'>Enlace de confirmación.</a></body></html>";
@@ -48,7 +48,7 @@ namespace Web
                     showMessage("El correo ya está registrado.", false);
                 }
 
-                da.close();
+                da.Close();
             }
         }
 
