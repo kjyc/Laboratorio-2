@@ -63,7 +63,7 @@
                             </asp:Legend>
                         </Legends>
                     </asp:Chart>
-                    <asp:SqlDataSource ID="sdsChart1" runat="server" ConnectionString="<%$ ConnectionStrings:HADS22-02 %>" SelectCommand="SELECT TG.codAsig, SUM(ET.hEstimadas) AS horasTotales FROM TareaGenerica AS TG INNER JOIN EstudianteTarea AS ET ON TG.codigo=ET.codTarea WHERE email=@email GROUP BY TG.codAsig">
+                    <asp:SqlDataSource ID="sdsChart1" runat="server" ConnectionString="<%$ ConnectionStrings:HADS22-02 %>" SelectCommand="SELECT TG.codAsig, SUM(ET.hReales) AS horasTotales FROM TareaGenerica AS TG INNER JOIN EstudianteTarea AS ET ON TG.codigo=ET.codTarea WHERE email=@email GROUP BY TG.codAsig">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="ddlStudents" Name="email" PropertyName="SelectedValue" />
                         </SelectParameters>
