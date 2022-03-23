@@ -11,7 +11,7 @@ namespace Web
 {
 
 
-    public partial class VerTareasProfesor
+    public partial class ImportarTareasXMLDocument
     {
 
         /// <summary>
@@ -60,30 +60,39 @@ namespace Web
         protected global::System.Web.UI.WebControls.SqlDataSource sdsSubjects;
 
         /// <summary>
-        /// Control bAddAssignment.
+        /// Control bImportXML.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bAddAssignment;
+        protected global::System.Web.UI.WebControls.Button bImportXML;
 
         /// <summary>
-        /// Control gvGenericTeacherAssignments.
+        /// Control ddlFilter.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvGenericTeacherAssignments;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFilter;
 
         /// <summary>
-        /// Control sdsGenericAssignments.
+        /// Control Xml1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sdsGenericAssignments;
+        protected global::System.Web.UI.WebControls.Xml Xml1;
+
+        /// <summary>
+        /// Control lMessage.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lMessage;
     }
 }

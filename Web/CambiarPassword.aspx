@@ -38,7 +38,7 @@
                     </asp:RegularExpressionValidator>
                     <asp:Panel ID="pMessageEmail" runat="server" CssClass="d-none"></asp:Panel>
                     <div class="p-2">
-                        <asp:Button ID="bRequestChange" runat="server" Text="Solicitar código" CssClass="btn btn-primary" OnClick="bRequestChange_Click" ValidationGroup="SendEmail"/>
+                        <asp:Button ID="bRequestChange" runat="server" Text="Solicitar código" CssClass="btn btn-primary" OnClick="bRequestChange_Click" ValidationGroup="SendEmail" />
                     </div>
                     <div class="p-2">
                         <label class="form-label">Código</label>

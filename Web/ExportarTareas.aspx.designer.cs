@@ -11,7 +11,7 @@ namespace Web
 {
 
 
-    public partial class VerTareasProfesor
+    public partial class ImportarTareas
     {
 
         /// <summary>
@@ -60,30 +60,30 @@ namespace Web
         protected global::System.Web.UI.WebControls.SqlDataSource sdsSubjects;
 
         /// <summary>
-        /// Control bAddAssignment.
+        /// Control bExportXML.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bAddAssignment;
+        protected global::System.Web.UI.WebControls.Button bExportXML;
 
         /// <summary>
-        /// Control gvGenericTeacherAssignments.
+        /// Control bExportJson.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvGenericTeacherAssignments;
+        protected global::System.Web.UI.WebControls.Button bExportJson;
 
         /// <summary>
-        /// Control sdsGenericAssignments.
+        /// Control gvGenericAssignments.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sdsGenericAssignments;
+        protected global::System.Web.UI.WebControls.GridView gvGenericAssignments;
     }
 }

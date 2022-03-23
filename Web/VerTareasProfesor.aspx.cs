@@ -18,6 +18,8 @@ namespace Web
             {
                 Response.Redirect("/Inicio.aspx");
             }
+            
+            lUsername.Text = "Hola, " + user.Name + " " + user.Lastname + " (" + user.Email + ")";
         }
 
         protected void bAddAssignment_Click(object sender, EventArgs e)

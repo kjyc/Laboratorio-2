@@ -4,23 +4,31 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Tareas Profesor</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="container mt-5">
-            <div class="row text-center bg-secondary rounded align-items-center">
+            <div class="row bg-secondary rounded align-items-center p-2">
+                <div class="col-10">
+                    <asp:Label ID="lUsername" runat="server" Text="" CssClass="text-light h6"></asp:Label>
+                </div>
+                <div class="col-2 text-center">
+                    <asp:Button ID="bLogout" runat="server" Text="Cerrar Sesión" CssClass="btn btn-dark" OnClick="bLogout_Click" />
+                </div>
+            </div>
+            <div class="row text-center bg-secondary rounded align-items-center mt-4 p-2">
                 <div class="col-2">
-                    <a href="/Estadisticas.aspx" class="btn btn-dark">Ver estadisticas</a>    
+                    <a href="/Profesor.aspx" class="btn btn-dark">Atras</a>
                 </div>
                 <div class="col-8 text-light">
-                    <h1>Profesor</h1>
-                    <h1>Gestión de Tareas Genéricas</h1>
+                    <h2>Profesor</h2>
+                    <h2>Gestión de Tareas Genéricas</h2>
                 </div>
                 <div class="col-2">
-                    <asp:Button ID="bLogout" runat="server" Text="Cerrar Sesión" CssClass="btn btn-dark" OnClick="bLogout_Click" />
+                    <a href="/Estadisticas.aspx" class="btn btn-dark">Ver estadisticas</a>
                 </div>
             </div>
             <div class="row p-5">
@@ -37,7 +45,7 @@
             </div>
             <div class="row px-5">
                 <div class="form-group">
-                    <asp:Button ID="bAddAssignment" runat="server" text="Insertar Tarea" CssClass="btn btn-primary" OnClick="bAddAssignment_Click"/>
+                    <asp:Button ID="bAddAssignment" runat="server" Text="Insertar Tarea" CssClass="btn btn-primary" OnClick="bAddAssignment_Click" />
                 </div>
             </div>
             <div class="row p-5">

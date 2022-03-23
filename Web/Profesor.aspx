@@ -11,10 +11,27 @@
 <body>
     <form id="form1" runat="server">
         <div class="container mt-5">
-            <div class="row text-center" style="height: 550px">
+            <div class="row bg-secondary rounded align-items-center p-2">
+                <div class="col-10">
+                    <asp:Label ID="lUsername" runat="server" Text="" CssClass="text-light h6"></asp:Label>
+                </div>
+                <div class="col-2 text-center">
+                    <asp:Button ID="bLogout" runat="server" Text="Cerrar Sesión" CssClass="btn btn-dark" OnClick="bLogout_Click" />
+                </div>
+            </div>
+            <div class="row text-center mt-4" style="height: 550px">
                 <div class="col-3 h-100 border-start border-top border-bottom border-secondary rounded-start">
                     <div class="row p-3">
                         <a href="/VerTareasProfesor.aspx" class="btn btn-secondary">Tareas</a>
+                    </div>
+                    <div class="row px-3 pb-3">
+                        <a href="/ImportarTareasXMLDocument.aspx" class="btn btn-secondary">Importar XML</a>
+                    </div>
+                    <div class="row px-3 pb-3">
+                        <a href="/ExportarTareas.aspx" class="btn btn-secondary">Exportar Tareas</a>
+                    </div>
+                    <div class="row px-3 pb-3">
+                        <a href="/ImportarTareasDataSet.aspx" class="btn btn-secondary">Importar (DataSet)</a>
                     </div>
                 </div>
                 <div class="col-9 h-100 border border-secondary rounded-end">

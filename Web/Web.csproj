@@ -44,6 +44,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
@@ -69,14 +72,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\HAS.xml" />
+    <Content Include="App_Data\SEG.xml" />
+    <Content Include="App_Data\VerTablaTareas.xsl" />
+    <Content Include="App_Data\VerTablaTareasPorCodigo.xsl" />
+    <Content Include="App_Data\VerTablaTareasPorDescripcion.xsl">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\VerTablaTareasPorHEstimadas.xsl" />
     <Content Include="CambiarPassword.aspx" />
     <Content Include="Confirmar.aspx" />
     <Content Include="Estadisticas.aspx" />
     <Content Include="Estudiante.aspx" />
+    <Content Include="ExportarTareas.aspx" />
+    <Content Include="ImportarTareasDataSet.aspx" />
+    <Content Include="ImportarTareasXMLDocument.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="InsertarTarea.aspx" />
     <Content Include="InstanciarTarea.aspx" />
-    <Content Include="Menu.aspx" />
     <Content Include="Profesor.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="VerTareasEstudiante.aspx" />
@@ -112,6 +125,27 @@
     <Compile Include="Estudiante.aspx.designer.cs">
       <DependentUpon>Estudiante.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ExportarTareas.aspx.cs">
+      <DependentUpon>ExportarTareas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExportarTareas.aspx.designer.cs">
+      <DependentUpon>ExportarTareas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportarTareasDataSet.aspx.cs">
+      <DependentUpon>ImportarTareasDataSet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportarTareasDataSet.aspx.designer.cs">
+      <DependentUpon>ImportarTareasDataSet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ImportarTareasXMLDocument.aspx.cs">
+      <DependentUpon>ImportarTareasXMLDocument.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportarTareasXMLDocument.aspx.designer.cs">
+      <DependentUpon>ImportarTareasXMLDocument.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -132,13 +166,6 @@
     </Compile>
     <Compile Include="InstanciarTarea.aspx.designer.cs">
       <DependentUpon>InstanciarTarea.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Menu.aspx.cs">
-      <DependentUpon>Menu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Menu.aspx.designer.cs">
-      <DependentUpon>Menu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profesor.aspx.cs">
       <DependentUpon>Profesor.aspx</DependentUpon>
@@ -171,6 +198,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Data\tareas.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\hads22-02 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\hads22-02 - Web Deploy.pubxml" />
