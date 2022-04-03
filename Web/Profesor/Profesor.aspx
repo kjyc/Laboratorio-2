@@ -22,16 +22,19 @@
             <div class="row text-center mt-4" style="height: 550px">
                 <div class="col-3 h-100 border-start border-top border-bottom border-secondary rounded-start">
                     <div class="row p-3">
-                        <a href="/VerTareasProfesor.aspx" class="btn btn-secondary">Tareas</a>
+                        <a href="/Profesor/VerTareasProfesor.aspx" class="btn btn-secondary">Tareas</a>
                     </div>
                     <div class="row px-3 pb-3">
-                        <a href="/ImportarTareasXMLDocument.aspx" class="btn btn-secondary">Importar XML</a>
+                        <a href="/Profesor/ImportarTareasXMLDocument.aspx" class="btn btn-secondary">Importar XML</a>
                     </div>
                     <div class="row px-3 pb-3">
-                        <a href="/ExportarTareas.aspx" class="btn btn-secondary">Exportar Tareas</a>
+                        <a href="/Profesor/ExportarTareas.aspx" class="btn btn-secondary">Exportar Tareas</a>
                     </div>
                     <div class="row px-3 pb-3">
-                        <a href="/ImportarTareasDataSet.aspx" class="btn btn-secondary">Importar (DataSet)</a>
+                        <a href="/Profesor/ImportarTareasDataSet.aspx" class="btn btn-secondary">Importar (DataSet)</a>
+                    </div>
+                    <div class="row px-3 pb-3">
+                        <a href="/Profesor/VerEstudiantes.aspx" class="btn btn-secondary">Ver Estudiantes</a>
                     </div>
                 </div>
                 <div class="col-9 h-100 border border-secondary rounded-end">

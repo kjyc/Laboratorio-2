@@ -9,7 +9,8 @@ namespace Web
     public partial class Registro : System.Web.UI.Page
     {
         private DataAccess da = new DataAccess();
-        MailSender ms = new MailSender();
+        private MailSender ms = new MailSender();
+        private Utilities u = new Utilities();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -26,12 +27,12 @@ namespace Web
                 string lastname = tbLastname.Text;
                 int confirmationNumber = r.Next(100000, 1000000);
                 string rol = rbRol.Text;
-                string password = tbPassword.Text;
+                string password = u.GetMD5Hash(tbPassword.Text);
                 int codePassword = r.Next(100000, 1000000);
 
-                if (da.Count("SELECT count(*) FROM Usuarios WHERE email='" + email + "'") != 1)
+                if (da.Count("SELECT count(*) FROM Usuario WHERE email='" + email + "'") != 1)
                 {
-                    if (da.Execute("INSERT INTO Usuarios VALUES ('" + email + "', '" + name + "', '" + lastname + "', " + confirmationNumber + ", 0, '" + rol + "', '" + password + "', " + codePassword + ")") == 1)
+                    if (da.Execute("INSERT INTO Usuario VALUES ('" + email + "', '" + name + "', '" + lastname + "', " + confirmationNumber + ", 0, '" + rol + "', '" + password + "', " + codePassword + ")") == 1)
                     {
                         string subject = "Confirmación de registro";
                         string body = "<html><head></head><body><h2>Haz click en el enlace!</h2><a href='http://hads22-02.azurewebsites.net/Confirmar.aspx?email=" + email + "&numC=" + confirmationNumber + "'>Enlace de confirmación.</a></body></html>";
@@ -51,6 +52,8 @@ namespace Web
                 da.Close();
             }
         }
+
+
 
         public void showMessage(string message, bool isOk)
         {

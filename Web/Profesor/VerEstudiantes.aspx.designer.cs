@@ -11,7 +11,7 @@ namespace Web
 {
 
 
-    public partial class VerTareasProfesor
+    public partial class VerEstudiantes
     {
 
         /// <summary>
@@ -42,48 +42,21 @@ namespace Web
         protected global::System.Web.UI.WebControls.Button bLogout;
 
         /// <summary>
-        /// Control ddlSubjects.
+        /// Control gvEstudiantes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSubjects;
+        protected global::System.Web.UI.WebControls.GridView gvEstudiantes;
 
         /// <summary>
-        /// Control sdsSubjects.
+        /// Control sdsEstudiantes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sdsSubjects;
-
-        /// <summary>
-        /// Control bAddAssignment.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bAddAssignment;
-
-        /// <summary>
-        /// Control gvGenericTeacherAssignments.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvGenericTeacherAssignments;
-
-        /// <summary>
-        /// Control sdsGenericAssignments.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sdsGenericAssignments;
+        protected global::System.Web.UI.WebControls.SqlDataSource sdsEstudiantes;
     }
 }

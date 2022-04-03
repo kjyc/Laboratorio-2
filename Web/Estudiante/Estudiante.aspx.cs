@@ -13,14 +13,7 @@ namespace Web
         private User user;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] != null)
-            {
-                user = (User)Session["User"];
-            }
-            else
-            {
-                Response.Redirect("/Inicio.aspx");
-            }
+            user = (User)Session["User"];
         }
     }
 }

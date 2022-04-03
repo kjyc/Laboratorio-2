@@ -7,8 +7,9 @@ namespace Web
 {
     public partial class CambiarPassword : System.Web.UI.Page
     {
-        DataAccess da = new DataAccess();
-        MailSender ms = new MailSender();
+        private DataAccess da = new DataAccess();
+        private MailSender ms = new MailSender();
+        private Utilities u = new Utilities();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -34,7 +35,7 @@ namespace Web
             int code = -1;
             if (da.Connect())
             {
-                SqlDataReader dr = da.Read("SELECT codpass FROM Usuarios WHERE email='" + email + "';");
+                SqlDataReader dr = da.Read("SELECT codpass FROM Usuario WHERE email='" + email + "';");
                 if (dr.HasRows)
                 {
                     dr.Read();
@@ -53,14 +54,14 @@ namespace Web
         protected void bChangePassword_Click(object sender, EventArgs e)
         {
             int code = int.Parse(tbCode.Text);
-            string newPassword = tbNewPassword.Text;
+            string newPassword = u.GetMD5Hash(tbNewPassword.Text);
 
             if (da.Connect())
             {
-                if (da.Count("SELECT count(*) FROM Usuarios WHERE codpass=" + code) == 1)
+                if (da.Count("SELECT count(*) FROM Usuario WHERE codpass=" + code) == 1)
                 {
                     Random r = new Random();
-                    if (da.Execute("UPDATE Usuarios SET pass='" + newPassword + "', codpass=" + r.Next(100000, 1000000) + "  WHERE codpass=" + code) == 1)
+                    if (da.Execute("UPDATE Usuario SET pass='" + newPassword + "', codpass=" + r.Next(100000, 1000000) + "  WHERE codpass=" + code) == 1)
                     {
                         showMessage("Se ha cambiado la contraseña.", true, false);
                     }

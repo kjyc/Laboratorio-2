@@ -21,7 +21,7 @@
             </div>
             <div class="row text-center bg-secondary rounded align-items-center mt-4 p-2">
                 <div class="col-2">
-                    <a href="/Profesor.aspx" class="btn btn-dark">Atras</a>
+                    <a href="/Profesor/Profesor.aspx" class="btn btn-dark">Atras</a>
                 </div>
                 <div class="col-8 text-light">
                     <h2>Profesor</h2>

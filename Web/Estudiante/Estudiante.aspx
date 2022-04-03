@@ -14,7 +14,7 @@
             <div class="row text-center" style="height: 550px">
                 <div class="col-3 h-100 border-start border-top border-bottom border-secondary rounded-start">
                     <div class="row p-3">
-                        <a href="/VerTareasEstudiante.aspx" class="btn btn-secondary">Tareas Genéricas</a>
+                        <a href="/Estudiante/VerTareasEstudiante.aspx" class="btn btn-secondary">Tareas Genéricas</a>
                     </div>
                 </div>
                 <div class="col-9 h-100 border border-secondary rounded-end">

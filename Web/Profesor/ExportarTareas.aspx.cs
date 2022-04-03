@@ -19,14 +19,7 @@ namespace Web
         private DataSet ds;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] != null && Session["Email"] != null)
-            {
-                user = (User)Session["User"];
-            }
-            else
-            {
-                Response.Redirect("/Inicio.aspx");
-            }
+            user = (User)Session["User"];
 
             lUsername.Text = "Hola, " + user.Name + " " + user.Lastname + " (" + user.Email + ")";
 
@@ -44,6 +37,7 @@ namespace Web
         protected void bLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
+            System.Web.Security.FormsAuthentication.SignOut();
             Response.Redirect("/Inicio.aspx");
         }
 
@@ -68,7 +62,7 @@ namespace Web
 
         protected void bExportXML_Click(object sender, EventArgs e)
         {
-            string filePath = Server.MapPath("App_Data/" + ddlSubjects.SelectedValue + ".xml");
+            string filePath = Server.MapPath("../App_Data/" + ddlSubjects.SelectedValue + ".xml");
             ds = (DataSet)Session["Data"];
             DataTable dt = ds.Tables[0];
             dt = dt.Select("[codAsig] = '" + ddlSubjects.SelectedValue + "'").CopyToDataTable();
@@ -103,7 +97,7 @@ namespace Web
             dt.Columns[3].SetOrdinal(4);
             string json = JsonConvert.SerializeObject(dt, Formatting.Indented);
             ds.Tables.Remove(dt);
-            File.WriteAllText(Server.MapPath("App_Data/" + ddlSubjects.SelectedValue + ".json"), json);
+            File.WriteAllText(Server.MapPath("../App_Data/" + ddlSubjects.SelectedValue + ".json"), json);
         }
 
         private void AddNameSpace(string xmlFile)

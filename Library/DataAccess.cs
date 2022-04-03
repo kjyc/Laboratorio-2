@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using Domain;
 using System.Data;
+using System.Diagnostics;
 
 namespace Library
 {
@@ -57,8 +58,10 @@ namespace Library
                 command = new SqlCommand(query, connection);
                 dr = command.ExecuteReader();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Debug.WriteLine(e.ToString());
+                Debug.WriteLine(e.Message);
                 return null;
             }
             return dr;

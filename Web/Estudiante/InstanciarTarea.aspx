@@ -13,7 +13,7 @@
         <div class="container mt-5">
             <div class="row text-center bg-secondary rounded align-items-center">
                 <div class="col-2">
-                    <a href="/VerTareasEstudiante.aspx" class="btn btn-dark">Atras</a>
+                    <a href="/Estudiante/VerTareasEstudiante.aspx" class="btn btn-dark">Atras</a>
                 </div>
                 <div class="col-8 text-light">
                     <h1>Alumnos</h1>

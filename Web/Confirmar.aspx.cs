@@ -14,7 +14,7 @@ namespace Web
                 string email = Request.Params["email"];
                 int confirmationNumber = int.Parse(Request.Params["numC"]);
 
-                SqlDataReader dr = da.Read("SELECT numconfir FROM Usuarios WHERE email='" + email + "'");
+                SqlDataReader dr = da.Read("SELECT numconfir FROM Usuario WHERE email='" + email + "'");
                 if (dr.HasRows)
                 {
                     dr.Read();
@@ -23,7 +23,7 @@ namespace Web
                     {
                         dr.Close();
 
-                        if (da.Execute("UPDATE Usuarios SET confirmado=1 WHERE email='" + email + "'") == 1)
+                        if (da.Execute("UPDATE Usuario SET confirmado=1 WHERE email='" + email + "'") == 1)
                         {
                             lMessage.Text = "Has confirmado tu registro.";
                         }

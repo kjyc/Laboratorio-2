@@ -16,14 +16,7 @@ namespace Web
         private DataSet ds;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] != null && Session["Email"] != null)
-            {
-                user = (User)Session["User"];
-            }
-            else
-            {
-                Response.Redirect("/Inicio.aspx");
-            }
+            user = (User)Session["User"];
 
             lUsername.Text = "Hola, " + user.Name + " " + user.Lastname + " (" + user.Email + ")";
 
@@ -43,11 +36,11 @@ namespace Web
 
         private void FillTable()
         {
-            string filePath = Server.MapPath("App_Data/" + ddlSubjects.SelectedValue + ".xml");
+            string filePath = Server.MapPath("../App_Data/" + ddlSubjects.SelectedValue + ".xml");
             if (File.Exists(filePath))
             {
                 Xml1.DocumentSource = filePath;
-                Xml1.TransformSource = Server.MapPath("App_Data/VerTablaTareas.xsl");
+                Xml1.TransformSource = Server.MapPath("../App_Data/VerTablaTareas.xsl");
                 lMessage.Text = "";
             }
             else
@@ -59,6 +52,7 @@ namespace Web
         protected void bLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
+            System.Web.Security.FormsAuthentication.SignOut();
             Response.Redirect("/Inicio.aspx");
         }
 
@@ -74,7 +68,7 @@ namespace Web
 
         protected void bImportDataSet_Click(object sender, EventArgs e)
         {
-            string filePath = Server.MapPath("App_Data/" + ddlSubjects.SelectedValue + ".xml");
+            string filePath = Server.MapPath("../App_Data/" + ddlSubjects.SelectedValue + ".xml");
             if (File.Exists(filePath))
             {
                 try

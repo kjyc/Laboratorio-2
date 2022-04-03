@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Mail;
 
@@ -28,6 +29,8 @@ namespace Library
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e.ToString());
+                Debug.WriteLine(e.Message);
                 return false;
             }
         }

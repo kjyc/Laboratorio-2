@@ -8,25 +8,18 @@ using Domain;
 
 namespace Web
 {
-    public partial class Profesor : System.Web.UI.Page
+    public partial class Estadisticas : System.Web.UI.Page
     {
-        User user;
+        private User user;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] != null && Session["Email"] != null)
-            {
-                user = (User)Session["User"];
-            }
-            else
-            {
-                Response.Redirect("/Inicio.aspx");
-            }
-            lUsername.Text = "Hola, " + user.Name + " " + user.Lastname + " (" + user.Email + ")";
+            user = (User)Session["User"];
         }
 
         protected void bLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
+            System.Web.Security.FormsAuthentication.SignOut();
             Response.Redirect("/Inicio.aspx");
         }
     }

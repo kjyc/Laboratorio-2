@@ -13,14 +13,7 @@ namespace Web
         private User user;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] != null)
-            {
-                user = (User)Session["User"];
-            }
-            else
-            {
-                Response.Redirect("/Inicio.aspx");
-            }
+            user = (User)Session["User"];
 
             if (!Page.IsPostBack)
             {
@@ -49,13 +42,14 @@ namespace Web
         protected void bLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
+            System.Web.Security.FormsAuthentication.SignOut();
             Response.Redirect("/Inicio.aspx");
         }
 
         protected void gvTareasGenericasEstudiante_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow selectedRow = gvGenericStudentAssignments.SelectedRow;
-            Response.Redirect("/InstanciarTarea.aspx?cod=" + selectedRow.Cells[1].Text + "&he=" + selectedRow.Cells[3].Text);
+            Response.Redirect("/Estudiante/InstanciarTarea.aspx?cod=" + selectedRow.Cells[1].Text + "&he=" + selectedRow.Cells[3].Text);
         }
 
         protected void ddlSubjects_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,7 +58,7 @@ namespace Web
             UpdateTable(dt);
         }
 
-        private void UpdateTable(DataTable dt) 
+        private void UpdateTable(DataTable dt)
         {
             DataView dv = new DataView(dt, "codAsig = '" + ddlSubjects.SelectedValue + "'", "codigo", DataViewRowState.CurrentRows);
             gvGenericStudentAssignments.DataSource = dv;

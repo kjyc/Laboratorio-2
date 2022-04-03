@@ -10,26 +10,20 @@ namespace Web
         private User user;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] != null && Session["Email"] != null)
-            {
-                user = (User)Session["User"];
-            }
-            else
-            {
-                Response.Redirect("/Inicio.aspx");
-            }
+            user = (User)Session["User"];
             
             lUsername.Text = "Hola, " + user.Name + " " + user.Lastname + " (" + user.Email + ")";
         }
 
         protected void bAddAssignment_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/InsertarTarea.aspx");
+            Response.Redirect("/Profesor/InsertarTarea.aspx");
         }
 
         protected void bLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
+            System.Web.Security.FormsAuthentication.SignOut();
             Response.Redirect("/Inicio.aspx");
         }
     }

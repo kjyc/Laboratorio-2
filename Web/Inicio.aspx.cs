@@ -2,16 +2,19 @@
 using Library;
 using System.Web.UI.HtmlControls;
 using Domain;
+using System.Web.Security;
 
 namespace Web
 {
     public partial class Inicio : System.Web.UI.Page
     {
         private DataAccess da = new DataAccess();
+        private Utilities u = new Utilities();
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+
         protected void bLogin_Click(object sender, EventArgs e)
         {
             if (da.Connect())
@@ -19,7 +22,7 @@ namespace Web
                 User user = da.GetUser(tbEmail.Text);
                 if (user != null)
                 {
-                    if (!user.IsCorrectPassword(tbPassword.Text))
+                    if (!user.IsCorrectPassword(u.GetMD5Hash(tbPassword.Text)))
                     {
                         ShowMessage("La contraseña es incorrecta.");
                     }
@@ -33,11 +36,24 @@ namespace Web
                         Session["Email"] = tbEmail.Text;
                         if (user.Role == "Alumno")
                         {
-                            Response.Redirect("/Estudiante.aspx");
+                            FormsAuthentication.SetAuthCookie("students", false);
+                            Response.Redirect("/Estudiante/Estudiante.aspx");
                         }
                         else if (user.Role == "Profesor")
                         {
-                            Response.Redirect("/Profesor.aspx");
+                            if (user.Email == "vadillo@ehu.es")
+                            {
+                                FormsAuthentication.SetAuthCookie("coordinator", false);
+                            }
+                            else if (user.Email == "admin@ehu.es") 
+                            {
+                                FormsAuthentication.SetAuthCookie("admin", false);
+                            }
+                            else
+                            {
+                                FormsAuthentication.SetAuthCookie("teachers", false);
+                            }
+                            Response.Redirect("/Profesor/Profesor.aspx");
                         }
                     }
                 }

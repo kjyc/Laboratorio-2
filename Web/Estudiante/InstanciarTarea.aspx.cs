@@ -15,14 +15,7 @@ namespace Web
         private DataSet ds;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User"] != null)
-            {
-                user = (User)Session["User"];
-            }
-            else
-            {
-                Response.Redirect("/Inicio.aspx");
-            }
+            user = (User)Session["User"];
 
             if (Page.IsPostBack)
             {
@@ -56,6 +49,7 @@ namespace Web
         protected void bLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
+            System.Web.Security.FormsAuthentication.SignOut();
             Response.Redirect("/Inicio.aspx");
         }
 

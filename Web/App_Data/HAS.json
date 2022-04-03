@@ -1,0 +1,37 @@
+[
+  {
+    "codigo": "HAS20-Lab1",
+    "descripcion": "Lab componentes",
+    "hestimadas": 6,
+    "tipotarea": "Laboratorio",
+    "explotacion": true
+  },
+  {
+    "codigo": "HAS20-Lab10",
+    "descripcion": "Sobre django",
+    "hestimadas": 10,
+    "tipotarea": "Laboratorio",
+    "explotacion": true
+  },
+  {
+    "codigo": "HAS20-Lab2",
+    "descripcion": "Web Forms",
+    "hestimadas": 12,
+    "tipotarea": "Laboratorio",
+    "explotacion": true
+  },
+  {
+    "codigo": "HAS20-Test1",
+    "descripcion": "Test 1 de la asignatura",
+    "hestimadas": 3,
+    "tipotarea": "examen",
+    "explotacion": false
+  },
+  {
+    "codigo": "HAS21-LAB4",
+    "descripcion": "Lab sobre ADO.NET",
+    "hestimadas": 20,
+    "tipotarea": "Laboratorio",
+    "explotacion": true
+  }
+]
