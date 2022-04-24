@@ -11,7 +11,7 @@ namespace Web
 {
 
 
-    public partial class InstanciarTarea
+    public partial class VerDedicacionMediaDeAlumnos
     {
 
         /// <summary>
@@ -42,66 +42,48 @@ namespace Web
         protected global::System.Web.UI.WebControls.Button bLogout;
 
         /// <summary>
-        /// Control tbEmail.
+        /// Control ScriptManager1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbEmail;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// Control tbAssignment.
+        /// Control UpdatePanel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbAssignment;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// Control tbEstimatedHours.
+        /// Control ddlSubjects.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbEstimatedHours;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSubjects;
 
         /// <summary>
-        /// Control tbActualHours.
+        /// Control sdsSubjects.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbActualHours;
+        protected global::System.Web.UI.WebControls.SqlDataSource sdsSubjects;
 
         /// <summary>
-        /// Control bCreateAssignment.
+        /// Control lResponse.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bCreateAssignment;
-
-        /// <summary>
-        /// Control lMessage.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lMessage;
-
-        /// <summary>
-        /// Control gvTareasEstudiante.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvTareasEstudiante;
+        protected global::System.Web.UI.WebControls.Label lResponse;
     }
 }

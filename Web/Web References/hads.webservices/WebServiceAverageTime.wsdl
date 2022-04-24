@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.ehu.es/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.ehu.es/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.ehu.es/">
+      <s:element name="GetAverageTimePerSubject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="subject" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAverageTimePerSubjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAverageTimePerSubjectResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAverageTimePerSubjectSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAverageTimePerSubject" />
+  </wsdl:message>
+  <wsdl:message name="GetAverageTimePerSubjectSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAverageTimePerSubjectResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceAverageTimeSoap">
+    <wsdl:operation name="GetAverageTimePerSubject">
+      <wsdl:input message="tns:GetAverageTimePerSubjectSoapIn" />
+      <wsdl:output message="tns:GetAverageTimePerSubjectSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceAverageTimeSoap" type="tns:WebServiceAverageTimeSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAverageTimePerSubject">
+      <soap:operation soapAction="http://www.ehu.es/GetAverageTimePerSubject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceAverageTimeSoap12" type="tns:WebServiceAverageTimeSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAverageTimePerSubject">
+      <soap12:operation soapAction="http://www.ehu.es/GetAverageTimePerSubject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceAverageTime">
+    <wsdl:port name="WebServiceAverageTimeSoap" binding="tns:WebServiceAverageTimeSoap">
+      <soap:address location="https://hads22-02-webservices.azurewebsites.net/WebServiceAverageTime.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceAverageTimeSoap12" binding="tns:WebServiceAverageTimeSoap12">
+      <soap12:address location="https://hads22-02-webservices.azurewebsites.net/WebServiceAverageTime.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

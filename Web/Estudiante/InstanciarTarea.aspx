@@ -11,6 +11,14 @@
 <body>
     <form id="form1" runat="server">
         <div class="container mt-5">
+            <div class="row bg-secondary rounded align-items-center p-2">
+                <div class="col-10">
+                    <asp:Label ID="lUsername" runat="server" Text="" CssClass="text-light h6"></asp:Label>
+                </div>
+                <div class="col-2">
+                    <asp:Button ID="bLogout" runat="server" Text="Cerrar Sesión" CssClass="btn btn-dark" OnClick="bLogout_Click" />
+                </div>
+            </div>
             <div class="row text-center bg-secondary rounded align-items-center">
                 <div class="col-2">
                     <a href="/Estudiante/VerTareasEstudiante.aspx" class="btn btn-dark">Atras</a>
@@ -20,7 +28,6 @@
                     <h1>Instanciar Tarea Genérica</h1>
                 </div>
                 <div class="col-2">
-                    <asp:Button ID="bLogout" runat="server" Text="Cerrar Sesión" CssClass="btn btn-dark" OnClick="bLogout_Click" />
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -45,17 +52,17 @@
                         <asp:Button ID="bCreateAssignment" runat="server" Text="Crear tarea" CssClass="btn btn-primary" OnClick="bCreateAssignment_Click" />
                     </div>
                     <div class="p-2">
-                        <asp:Label ID="lMessage" runat="server" CssClass="h4" Text=""/>
+                        <asp:Label ID="lMessage" runat="server" CssClass="h4" Text="" />
                     </div>
                 </div>
             </div>
             <div class="row p-5">
                 <asp:GridView ID="gvTareasEstudiante" runat="server" AutoGenerateColumns="false" CssClass="table table-hover" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
                     <Columns>
-                        <asp:BoundField HeaderText="Email" DataField="email"/>
-                        <asp:BoundField HeaderText="Código Tarea" DataField="codTarea"/>
-                        <asp:BoundField HeaderText="Horas Estimadas" DataField="hEstimadas"/>
-                        <asp:BoundField HeaderText="Horas Reales" DataField="hReales"/>
+                        <asp:BoundField HeaderText="Email" DataField="email" />
+                        <asp:BoundField HeaderText="Código Tarea" DataField="codTarea" />
+                        <asp:BoundField HeaderText="Horas Estimadas" DataField="hEstimadas" />
+                        <asp:BoundField HeaderText="Horas Reales" DataField="hReales" />
                     </Columns>
                     <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                     <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />

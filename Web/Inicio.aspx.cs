@@ -3,6 +3,7 @@ using Library;
 using System.Web.UI.HtmlControls;
 using Domain;
 using System.Web.Security;
+using System.Collections.Generic;
 
 namespace Web
 {
@@ -36,16 +37,19 @@ namespace Web
                         Session["Email"] = tbEmail.Text;
                         if (user.Role == "Alumno")
                         {
+
+                            UpdateNumberOfUserConnected("Students", tbEmail.Text);
                             FormsAuthentication.SetAuthCookie("students", false);
                             Response.Redirect("/Estudiante/Estudiante.aspx");
                         }
                         else if (user.Role == "Profesor")
                         {
+                            UpdateNumberOfUserConnected("Teachers", tbEmail.Text);
                             if (user.Email == "vadillo@ehu.es")
                             {
                                 FormsAuthentication.SetAuthCookie("coordinator", false);
                             }
-                            else if (user.Email == "admin@ehu.es") 
+                            else if (user.Email == "admin@ehu.es")
                             {
                                 FormsAuthentication.SetAuthCookie("admin", false);
                             }
@@ -73,6 +77,20 @@ namespace Web
             container.InnerText = message;
             pMessage.Controls.Add(container);
             pMessage.CssClass = "p-2";
+        }
+
+        private void UpdateNumberOfUserConnected(string key, string email)
+        {
+            Application.Lock();
+
+            int n = (int)Application["NumberOfConnected" + key] + 1;
+            Application["NumberOfConnected" + key] = n;
+
+            List<String> users = (List<string>)Application["ListOf" + key];
+            users.Add(email);
+            Application["ListOf" + key] = users;
+
+            Application.UnLock();
         }
     }
 }

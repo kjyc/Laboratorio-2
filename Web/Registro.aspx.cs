@@ -11,9 +11,10 @@ namespace Web
         private DataAccess da = new DataAccess();
         private MailSender ms = new MailSender();
         private Utilities u = new Utilities();
+        private es.ehusw.Matriculas wsm = new es.ehusw.Matriculas();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void bRegistrar_Click(object sender, EventArgs e)
@@ -63,6 +64,26 @@ namespace Web
             container.InnerText = message;
             pMessage.Controls.Add(container);
             pMessage.CssClass = "p-2";
+        }
+
+        protected void tbEmail_TextChanged(object sender, EventArgs e)
+        {
+            string result = wsm.comprobar(tbEmail.Text);
+            if (result == "SI")
+            {
+                lMessageAjax.Text = "Es un correo válido.";
+                bRegistrar.Enabled = true;
+            }
+            else if (result == "NO")
+            {
+                lMessageAjax.Text = "No es un correo válido.";
+                bRegistrar.Enabled = false;
+            }
+            else 
+            {
+                lMessageAjax.Text = "";
+                bRegistrar.Enabled = false;
+            }
         }
     }
 }

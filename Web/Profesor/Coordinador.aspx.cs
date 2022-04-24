@@ -8,12 +8,18 @@ using Domain;
 
 namespace Web
 {
-    public partial class Estadisticas : System.Web.UI.Page
+    public partial class VerDedicacionMediaDeAlumnos : System.Web.UI.Page
     {
         private User user;
+        private hads.webservices.WebServiceAverageTime wsat = new hads.webservices.WebServiceAverageTime();
         protected void Page_Load(object sender, EventArgs e)
         {
-            user = (User)Session["User"];
+            if (Session["User"] != null)
+            {
+                user = (User)Session["User"];
+                lUsername.Text = "Hola, " + user.Name + " " + user.Lastname + " (" + user.Email + ")";
+
+            }
         }
 
         protected void bLogout_Click(object sender, EventArgs e)
@@ -29,6 +35,19 @@ namespace Web
             Session.Abandon();
             System.Web.Security.FormsAuthentication.SignOut();
             Response.Redirect("/Inicio.aspx");
+        }
+
+        protected void ddlSubjects_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string result = wsat.GetAverageTimePerSubject(ddlSubjects.SelectedValue);
+            if (result != "")
+            {
+                lResponse.Text = "La media de dedicación de " + ddlSubjects.SelectedValue + " es: " + result + " horas.";
+            }
+            else 
+            {
+                lResponse.Text = "No hay registro de esta asignatura.";
+            }
         }
     }
 }

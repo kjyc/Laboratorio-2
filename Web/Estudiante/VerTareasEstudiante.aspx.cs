@@ -4,6 +4,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Library;
 using Domain;
+using System.Collections.Generic;
 
 namespace Web
 {
@@ -41,6 +42,14 @@ namespace Web
 
         protected void bLogout_Click(object sender, EventArgs e)
         {
+            if (Session["User"] != null)
+            {
+                int n = (int)Application["NumberOfConnectedStudents"] - 1;
+                Application["NumberOfConnectedStudents"] = n;
+                List<String> users = (List<string>)Application["ListOfStudents"];
+                users.Remove(user.Email);
+                Application["ListOfStudents"] = users;
+            }
             Session.Abandon();
             System.Web.Security.FormsAuthentication.SignOut();
             Response.Redirect("/Inicio.aspx");

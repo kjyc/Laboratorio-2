@@ -18,100 +18,113 @@
         <div class="row justify-content-md-center">
             <div class="col-6">
                 <form id="form1" runat="server">
-                    <div class="p-2">
-                        <label class="form-label">Correo</label>
-                        <asp:TextBox ID="tbEmail" runat="server" CssClass="form-control" />
-                    </div>
-                    <asp:RequiredFieldValidator ID="rfvEmail" Display="Dynamic" ControlToValidate="tbEmail" runat="server">
-                        <div class="p-2">
-                            <div class="alert alert-danger m-0" role="alert">
-                                Introduce tu correo electrónico.
+                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <div class="p-2">
+                                <label class="form-label">Correo</label>
+                                <asp:TextBox ID="tbEmail" runat="server" CssClass="form-control" OnTextChanged="tbEmail_TextChanged" AutoPostBack="true" />
                             </div>
-                        </div>
-                    </asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="revEmail" Display="Dynamic" ControlToValidate="tbEmail" runat="server" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
-                        <div class="p-2">
-                            <div class="alert alert-danger m-0" role="alert">
-                                Introduce un correo electrónico válido.
+                            <div class="p-2">
+                                <div class="alert alert-info m-0" role="alert">
+                                    <asp:Label ID="lMessageAjax" runat="server" Text="Introduce tu correo electrónico."></asp:Label>
+                                </div>
                             </div>
-                        </div>
-                    </asp:RegularExpressionValidator>
-                    <div class="p-2">
-                        <label class="form-label">Nombre</label>
-                        <asp:TextBox ID="tbName" runat="server" CssClass="form-control" />
-                    </div>
-                    <asp:RequiredFieldValidator ID="rfvName" Display="Dynamic" ControlToValidate="tbName" runat="server">
-                        <div class="p-2">
-                            <div class="alert alert-danger m-0" role="alert">
-                                Introduce tu nombre.
+                            <asp:RequiredFieldValidator ID="rfvEmail" Display="Dynamic" ControlToValidate="tbEmail" runat="server">
+                                <div class="p-2">
+                                    <div class="alert alert-danger m-0" role="alert">
+                                        Introduce tu correo electrónico.
+                                    </div>
+                                </div>
+                            </asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="revEmail" Display="Dynamic" ControlToValidate="tbEmail" runat="server" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
+                                <div class="p-2">
+                                    <div class="alert alert-danger m-0" role="alert">
+                                        Introduce un correo electrónico válido.
+                                    </div>
+                                </div>
+                            </asp:RegularExpressionValidator>
+                            <div class="p-2">
+                                <label class="form-label">Nombre</label>
+                                <asp:TextBox ID="tbName" runat="server" CssClass="form-control" />
                             </div>
-                        </div>
-                    </asp:RequiredFieldValidator>
-                    <div class="p-2">
-                        <label class="form-label">Apellidos</label>
-                        <asp:TextBox ID="tbLastname" runat="server" CssClass="form-control" />
-                    </div>
-                    <asp:RequiredFieldValidator ID="rfvLastname" Display="Dynamic" ControlToValidate="tbLastname" runat="server">
-                        <div class="p-2">
-                            <div class="alert alert-danger m-0" role="alert">
-                                Introduce tu apellido.
+                            <asp:RequiredFieldValidator ID="rfvName" Display="Dynamic" ControlToValidate="tbName" runat="server">
+                            <div class="p-2">
+                                <div class="alert alert-danger m-0" role="alert">
+                                    Introduce tu nombre.
+                                </div>
                             </div>
-                        </div>
-                    </asp:RequiredFieldValidator>
-                    <div class="p-2">
-                        <label class="form-label">Contraseña</label>
-                        <asp:TextBox ID="tbPassword" runat="server" CssClass="form-control" TextMode="Password" />
-                    </div>
-                    <asp:RequiredFieldValidator ID="rfvPassword" Display="Dynamic" ControlToValidate="tbPassword" runat="server">
-                        <div class="p-2">
-                            <div class="alert alert-danger m-0" role="alert">
-                                Introduce una contraseña.
+                            </asp:RequiredFieldValidator>
+                            <div class="p-2">
+                                <label class="form-label">Apellidos</label>
+                                <asp:TextBox ID="tbLastname" runat="server" CssClass="form-control" />
                             </div>
-                        </div>
-                    </asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="revPassword" Display="Dynamic" ControlToValidate="tbPassword" runat="server" ValidationExpression="\w{6,}">
-                        <div class="p-2">
-                            <div class="alert alert-danger m-0" role="alert">
-                                La contraseña debe tener por lo menos 6 dígitos.
+                            <asp:RequiredFieldValidator ID="rfvLastname" Display="Dynamic" ControlToValidate="tbLastname" runat="server">
+                            <div class="p-2">
+                                <div class="alert alert-danger m-0" role="alert">
+                                    Introduce tu apellido.
+                                </div>
                             </div>
-                        </div>
-                    </asp:RegularExpressionValidator>
-                    <div class="p-2">
-                        <label class="form-label">Repetir contraseña</label>
-                        <asp:TextBox ID="tbPassword_" runat="server" CssClass="form-control" TextMode="Password" />
-                    </div>
-                    <asp:RequiredFieldValidator ID="rfvPassword_" Display="Dynamic" ControlToValidate="tbPassword_" runat="server">
-                        <div class="p-2">
-                            <div class="alert alert-danger m-0" role="alert">
-                                Introduce otra vez la contraseña.
+                            </asp:RequiredFieldValidator>
+                            <div class="p-2">
+                                <label class="form-label">Contraseña</label>
+                                <asp:TextBox ID="tbPassword" runat="server" CssClass="form-control" TextMode="Password" />
                             </div>
-                        </div>
-                    </asp:RequiredFieldValidator>
-                    <asp:CompareValidator ID="cvPassword_" Display="Dynamic" ControlToCompare="tbPassword" ControlToValidate="tbPassword_" runat="server">
-                        <div class="p-2">
-                            <div class="alert alert-danger m-0" role="alert">
-                                Las contraseñas deben coincidir.
+                            <asp:RequiredFieldValidator ID="rfvPassword" Display="Dynamic" ControlToValidate="tbPassword" runat="server">
+                            <div class="p-2">
+                                <div class="alert alert-danger m-0" role="alert">
+                                    Introduce una contraseña.
+                                </div>
                             </div>
-                        </div>
-                    </asp:CompareValidator>
-                    <div class="p-2">
-                        <label class="form-label">Rol</label>
-                        <asp:RadioButtonList ID="rbRol" runat="server">
-                            <asp:ListItem>Alumno</asp:ListItem>
-                            <asp:ListItem>Profesor</asp:ListItem>
-                        </asp:RadioButtonList>
-                    </div>
-                    <asp:RequiredFieldValidator ID="rfvRol" Display="Dynamic" ControlToValidate="rbRol" runat="server">
-                        <div class="p-2">
-                            <div class="alert alert-danger m-0" role="alert">
-                                Selecciona un rol.
+                            </asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="revPassword" Display="Dynamic" ControlToValidate="tbPassword" runat="server" ValidationExpression="\w{6,}">
+                            <div class="p-2">
+                                <div class="alert alert-danger m-0" role="alert">
+                                    La contraseña debe tener por lo menos 6 dígitos.
+                                </div>
                             </div>
-                        </div>
-                    </asp:RequiredFieldValidator>
-                    <asp:Panel ID="pMessage" runat="server" CssClass="d-none"></asp:Panel>
-                    <div class="p-2">
-                        <asp:Button ID="bRegistrar" runat="server" Text="Registrarse" CssClass="btn btn-primary" OnClick="bRegistrar_Click" />
-                    </div>
+                            </asp:RegularExpressionValidator>
+                            <div class="p-2">
+                                <label class="form-label">Repetir contraseña</label>
+                                <asp:TextBox ID="tbPassword_" runat="server" CssClass="form-control" TextMode="Password" />
+                            </div>
+                            <asp:RequiredFieldValidator ID="rfvPassword_" Display="Dynamic" ControlToValidate="tbPassword_" runat="server">
+                            <div class="p-2">
+                                <div class="alert alert-danger m-0" role="alert">
+                                    Introduce otra vez la contraseña.
+                                </div>
+                            </div>
+                            </asp:RequiredFieldValidator>
+                            <asp:CompareValidator ID="cvPassword_" Display="Dynamic" ControlToCompare="tbPassword" ControlToValidate="tbPassword_" runat="server">
+                            <div class="p-2">
+                                <div class="alert alert-danger m-0" role="alert">
+                                    Las contraseñas deben coincidir.
+                                </div>
+                            </div>
+                            </asp:CompareValidator>
+                            <div class="p-2">
+                                <label class="form-label">Rol</label>
+                                <asp:RadioButtonList ID="rbRol" runat="server">
+                                    <asp:ListItem>Alumno</asp:ListItem>
+                                    <asp:ListItem>Profesor</asp:ListItem>
+                                </asp:RadioButtonList>
+                            </div>
+                            <asp:RequiredFieldValidator ID="rfvRol" Display="Dynamic" ControlToValidate="rbRol" runat="server">
+                            <div class="p-2">
+                                <div class="alert alert-danger m-0" role="alert">
+                                    Selecciona un rol.
+                                </div>
+                            </div>
+                            </asp:RequiredFieldValidator>
+                            <asp:Panel ID="pMessage" runat="server" CssClass="d-none"></asp:Panel>
+                            <div class="p-2">
+                                <asp:Button ID="bRegistrar" runat="server" Text="Registrarse" CssClass="btn btn-primary" OnClick="bRegistrar_Click" Enabled="false" />
+                            </div>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="tbEmail" EventName="TextChanged" />
+                        </Triggers>
+                    </asp:UpdatePanel>
                     <div class="p-2">
                         <a href="/Inicio.aspx">Ir a Inicio</a>
                     </div>
